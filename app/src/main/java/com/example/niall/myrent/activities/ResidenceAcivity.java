@@ -17,7 +17,7 @@ public class ResidenceAcivity extends Activity implements TextWatcher {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_my_rent);
+    setContentView(R.layout.activity_residence);
     geolocation = (EditText) findViewById(R.id.geolocation);
     residence = new Residence();
 
