@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
     android:orientation="vertical">
 
     <!-- LOCATION SEPARATOR -->
@@ -19,6 +18,8 @@
         android:id="@+id/geolocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:hint="@string/geolocation_hint">
         <requestFocus/>
     </EditText>
@@ -34,13 +35,17 @@
     <Button
         android:id="@+id/registration_date"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"/>
 
     <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="match_parent"
+        android:id="@+id/isrented"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/isrented"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:checked="false"/>
 
 </LinearLayout>
