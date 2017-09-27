@@ -1,4 +1,4 @@
-package com.example.niall.myrent;
+package com.example.niall.myrent.models;
 
 import java.util.Random;
 
