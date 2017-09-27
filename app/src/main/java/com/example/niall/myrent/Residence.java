@@ -1,4 +1,4 @@
-package org.wit.myrent;
+package com.example.niall.myrent;
 
 import java.util.Random;
 
@@ -21,7 +21,8 @@ public class Residence {
     long rndVal = 0;
     do {
       rndVal = new Random().nextLong();
-    } while (rndVal <= 0);
+    }
+    while (rndVal <= 0);
     return rndVal;
   }
 
