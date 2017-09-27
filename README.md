@@ -5,8 +5,8 @@ An application to track location, rental status and other information about prop
 
 User will have the ability to: 
 
-..* Track multiple properties
-..* Use map location
-..* Add images
-..* Store contact information
-..* Do more soon...
+⋅⋅* Track multiple properties
+⋅⋅* Use map location
+⋅⋅* Add images
+⋅⋅* Store contact information
+⋅⋅* Do more soon...
