@@ -1,5 +1,8 @@
 package com.example.niall.myrent.models;
 
+import android.widget.Button;
+import android.widget.CheckBox;
+
 import java.util.Date;
 import java.util.Random;
 
