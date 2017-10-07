@@ -5,9 +5,13 @@ import com.example.niall.myrent.app.MyRentApp;
 import com.example.niall.myrent.models.Portfolio;
 import com.example.niall.myrent.models.Residence;
 
+import static com.example.niall.myrent.android.helpers.IntentHelper.startActivityWithData;
+import static com.example.niall.myrent.android.helpers.IntentHelper.startActivityWithDataForResult;
+
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.support.v7.app.AppCompatActivity;
@@ -45,9 +49,7 @@ public class ResidenceListActivity extends AppCompatActivity implements AdapterV
   @Override
   public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
     Residence residence = adapter.getItem(position);
-    Intent intent = new Intent(this, ResidenceActivity.class);
-    intent.putExtra("RESIDENCE_ID", residence.id);
-    startActivity(intent);
+    startActivityWithData(this, ResidenceActivity.class, "RESIDENCE_ID", residence.id);
   }
 
   @Override
@@ -61,6 +63,20 @@ public class ResidenceListActivity extends AppCompatActivity implements AdapterV
     MenuInflater menuInflater = getMenuInflater();
     menuInflater.inflate(R.menu.residencelist, menu);
     return true;
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item){
+    switch(item.getItemId()){
+      case R.id.menu_item_new_residence:
+        Residence residence = new Residence();
+        portfolio.addResidence(residence);
+        startActivityWithDataForResult(this, ResidenceActivity.class, "RESIDENCE_ID", residence.id, 0);
+        return true;
+
+      default:
+        return super.onOptionsItemSelected(item);
+    }
   }
 }
 
