@@ -123,4 +123,11 @@ public class ResidenceActivity extends Activity implements TextWatcher, OnChecke
         break;
     }
   }
+
+  @Override
+  public void onPause()
+  {
+    super.onPause();
+    portfolio.saveResidences();
+  }
 }
