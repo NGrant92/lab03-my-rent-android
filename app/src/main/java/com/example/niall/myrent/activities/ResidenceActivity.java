@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -48,8 +49,7 @@ public class ResidenceActivity extends Activity implements TextWatcher, OnChecke
     }
   }
 
-  public void updateControls(Residence residence)
-  {
+  public void updateControls(Residence residence) {
     geolocation.setText(residence.geolocation);
     rented.setChecked(residence.rented);
     dateButton.setText(residence.getDateString());
@@ -74,5 +74,28 @@ public class ResidenceActivity extends Activity implements TextWatcher, OnChecke
   public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
     Log.i(this.getClass().getSimpleName(), "rented Checked");
     residence.rented = isChecked;
+  }
+
+  private void geolocation(View v)
+  {
+    // Respond to user input
+    geolocation = (EditText) v.findViewById(R.id.geolocation);
+    geolocation.addTextChangedListener(new TextWatcher()
+    {
+      public void onTextChanged(CharSequence c, int start, int before, int count)
+      {
+        residence.setGeolocation(c.toString());
+      }
+
+      public void beforeTextChanged(CharSequence c, int start, int count, int after)
+      {
+        // this space intentionally left blank
+      }
+
+      public void afterTextChanged(Editable c)
+      {
+        // this space intentionally left blank
+      }
+    });
   }
 }
