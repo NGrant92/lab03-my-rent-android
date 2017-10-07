@@ -9,7 +9,6 @@
         android:title="@string/new_residence"
         app:showAsAction="ifRoom|withText"/>
 
-
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

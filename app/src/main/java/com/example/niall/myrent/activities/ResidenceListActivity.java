@@ -6,6 +6,8 @@ import com.example.niall.myrent.models.Portfolio;
 import com.example.niall.myrent.models.Residence;
 
 import android.content.Intent;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.support.v7.app.AppCompatActivity;
@@ -53,13 +55,19 @@ public class ResidenceListActivity extends AppCompatActivity implements AdapterV
     super.onResume();
     adapter.notifyDataSetChanged();
   }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu){
+    MenuInflater menuInflater = getMenuInflater();
+    menuInflater.inflate(R.menu.residencelist, menu);
+    return true;
+  }
 }
 
 class ResidenceAdapter extends ArrayAdapter<Residence> {
   private Context context;
 
-  public ResidenceAdapter(Context context, ArrayList<Residence> residences)
-  {
+  public ResidenceAdapter(Context context, ArrayList<Residence> residences) {
     super(context, 0, residences);
     this.context = context;
   }
