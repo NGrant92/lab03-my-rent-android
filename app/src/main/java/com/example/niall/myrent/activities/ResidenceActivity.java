@@ -27,7 +27,7 @@ import com.example.niall.myrent.models.Portfolio;
 import com.example.niall.myrent.models.Residence;
 import static com.example.niall.myrent.android.helpers.IntentHelper.navigateUp;
 
-public class ResidenceActivity extends AppCompatActivity implements TextWatcher, OnCheckedChangeListener, View.OnClickListener, DatePickerDialog.OnDateSetListener {
+public class ResidenceActivity extends AppCompatActivity implements TextWatcher, /*OnCheckedChangeListener,*/ View.OnClickListener, DatePickerDialog.OnDateSetListener{
 
   private EditText geolocation;
   private Residence residence;
@@ -45,10 +45,26 @@ public class ResidenceActivity extends AppCompatActivity implements TextWatcher,
     dateButton  = (Button)findViewById(R.id.registration_date);
     rented = (CheckBox)findViewById(R.id.isrented);
 
-    residence   = new Residence();
+    residence = new Residence();
     geolocation.addTextChangedListener(this);
-    rented.setOnCheckedChangeListener(this);
     dateButton.setOnClickListener(this);
+
+    //Listener set using: Lambda Expression
+    rented.setOnCheckedChangeListener((buttonView, isChecked) -> residence.rented = isChecked);
+
+    /*
+    //Listener set using: Delegate/Interface method
+    rented.setOnCheckedChangeListener(this);
+
+    //Listener set using: Inner anonymous class
+    rented.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+      @Override
+      public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        residence.rented = isChecked;
+      }
+    });
+    */
 
     MyRentApp app = (MyRentApp) getApplication();
     portfolio = app.portfolio;
@@ -90,11 +106,13 @@ public class ResidenceActivity extends AppCompatActivity implements TextWatcher,
     residence.setGeolocation(editable.toString());
   }
 
+  /*
   @Override
   public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
     Log.i(this.getClass().getSimpleName(), "rented Checked");
     residence.rented = isChecked;
   }
+  */
 
   private void geolocation(View v)
   {
