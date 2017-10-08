@@ -1,31 +1,33 @@
 package com.example.niall.myrent.activities;
 
-import android.app.DatePickerDialog;
 import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import android.app.DatePickerDialog;
+import android.view.View;
+
 import com.example.niall.myrent.R;
 import com.example.niall.myrent.app.MyRentApp;
 import com.example.niall.myrent.models.Portfolio;
 import com.example.niall.myrent.models.Residence;
+import static com.example.niall.myrent.android.helpers.IntentHelper.navigateUp;
 
-public class ResidenceActivity extends Activity implements TextWatcher, OnCheckedChangeListener, View.OnClickListener, DatePickerDialog.OnDateSetListener {
+public class ResidenceActivity extends AppCompatActivity implements TextWatcher, OnCheckedChangeListener, View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
   private EditText geolocation;
   private Residence residence;
@@ -37,6 +39,7 @@ public class ResidenceActivity extends Activity implements TextWatcher, OnChecke
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_residence);
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     geolocation = (EditText)findViewById(R.id.geolocation);
     dateButton  = (Button)findViewById(R.id.registration_date);
@@ -60,6 +63,16 @@ public class ResidenceActivity extends Activity implements TextWatcher, OnChecke
     geolocation.setText(residence.geolocation);
     rented.setChecked(residence.rented);
     dateButton.setText(residence.getDateString());
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item){
+    switch (item.getItemId()){
+      case android.R.id.home:
+        navigateUp(this);
+        return true;
+    }
+    return super.onOptionsItemSelected(item);
   }
 
   @Override
